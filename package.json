@@ -1,0 +1,24 @@
+{
+  "name": "nanobox-static",
+  "version": "1.0.0",
+  "description": "Static site scaffold for nanobox",
+  "main": "index.js",
+  "scripts": {
+    "start": "nanobox run nginx",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fuzzco/nanobox-static.git"
+  },
+  "keywords": [
+    "static",
+    "site"
+  ],
+  "author": "Fuzzco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fuzzco/nanobox-static/issues"
+  },
+  "homepage": "https://github.com/fuzzco/nanobox-static#readme"
+}
