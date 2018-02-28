@@ -1,0 +1,11 @@
+run.config:
+  engine: static
+  engine.config:
+    # whether to redirect http to https
+    # set to env var
+    force_https: false
+    # the directory to serve up
+    rel_dir: ./public
+    error_pages:
+      - errors: 404 =200
+        page: index.html
