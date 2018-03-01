@@ -4,7 +4,15 @@
   "description": "Static site scaffold for nanobox",
   "main": "index.js",
   "scripts": {
-    "start": "nanobox run nginx",
+    "start": "npm run dev",
+    "serve": "nanobox run nginx -c /app/nginx-local.conf",
+    "dev": "parallelshell 'npm run serve' 'npm run js' 'npm run css' 'npm run img'",
+    "precss": "node-sass ./source/scss/style.scss -o ./",
+    "css": "node-sass ./source/scss/style.scss -o ./ --watch",
+    "css:min": "postcss ./style.css -u autoprefixer cssnano -o ./style.min.css",
+    "js": "rollup -c -w",
+    "js:min": "rollup -c --environment production",
+    "img": "imagemin-newer source/img/ img/",
     "test": "test"
   },
   "repository": {
@@ -20,5 +28,21 @@
   "bugs": {
     "url": "https://github.com/fuzzco/nanobox-static/issues"
   },
-  "homepage": "https://github.com/fuzzco/nanobox-static#readme"
+  "homepage": "https://github.com/fuzzco/nanobox-static#readme",
+  "devDependencies": {
+    "clean-css": "^4.1.7",
+    "imagemin-newer": "^1.0.2",
+    "live-server": "^1.2.0",
+    "node-sass": "^4.7.2",
+    "parallelshell": "^3.0.2",
+    "postcss-cli": "^4.1.0",
+    "postcss-import": "^10.0.0",
+    "rollup": "^0.56.3",
+    "rollup-plugin-buble": "^0.15.0",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-svelte": "^2.0.3",
+    "rollup-plugin-uglify": "^1.0.1",
+    "rollup-watch": "^3.2.2"
+  }
 }
